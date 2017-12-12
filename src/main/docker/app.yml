@@ -1,0 +1,14 @@
+version: '2'
+services:
+    hola-app:
+        image: hola
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://hola-mysql:3306/hola?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    hola-mysql:
+        extends:
+            file: mysql.yml
+            service: hola-mysql
